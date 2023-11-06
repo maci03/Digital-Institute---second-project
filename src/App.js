@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SubjectButtons from './SubjectButtons';
-import SubjectTable from './SubjectTable';
+import SubjectButtons from './components/SubjectButtons';
+import SubjectTable from './components/SubjectTable';
 import StudentTable from './components/StudentTable';
 
 function App() {
