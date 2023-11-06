@@ -3,16 +3,20 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SubjectButtons from './components/SubjectButtons';
 import SubjectTable from './components/SubjectTable';
 import StudentTable from './components/StudentTable';
+import WeekFilterButtons from './components/WeekFilterButtons';
+import WeekFilterTable from './components/WeekFillterTable';
+
+
 
 function App() {
   return (
     <Router>
       <div>
         <SubjectButtons />
+        <WeekFilterButtons />
         <Switch>
-          <Route path="/subject/georgian" component={() => <SubjectTable subject="Georgian" />} />
-          <Route path="/subject/math" component={() => <SubjectTable subject="Mathematics" />} />
-          <Route path="/subject/english" component={() => <SubjectTable subject="English" />} />
+          <Route path="/subject/:subject" component={SubjectTable} />
+          <Route path="/week/:week" component={WeekFilterTable} />
         </Switch>
       </div>
     </Router>

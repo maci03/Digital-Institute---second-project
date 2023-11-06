@@ -2,13 +2,28 @@
 /* SubjectButtons.css */
 .button-container {
   display: flex;
-  gap: 10px; /* Space between buttons */
+  gap: 10px; 
 }
 
 .button {
   background-color: transparent;
-  color: blue; /* Text color */
-  border: 1px solid blue; /* Blue border */
+  color: blue; 
+  border: 1px solid blue; 
   padding: 5px 10px;
-  text-decoration: none; /* Remove text decoration */
+  text-decoration: none; 
+}
+/* SubjectButtons.css  */
+.button-container-week {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.button {
+  background-color: transparent;
+  color: blue; 
+  border: 1px solid blue; 
+  padding: 5px 10px;
+  text-decoration: none; 
 }
