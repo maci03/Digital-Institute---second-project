@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import "../App.css";
 
 
 
 function SubjectButtons() {
   return (
-    <div id="buttons">
-      <Link to="/subject/georgian">Georgian</Link>
-      <Link to="/subject/math">Mathematics</Link>
-      <Link to="/subject/english">English</Link>
+    <div id="buttons" className="button-container">
+      <Link to="/subject/georgian" className="button">ქართული</Link>
+      <Link to="/subject/math" className="button">მათემატიკა</Link>
+      <Link to="/subject/english" className="button">ინგლისური</Link>
     </div>
   );
 }
