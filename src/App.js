@@ -15,8 +15,8 @@ function App() {
         <SubjectButtons />
         <WeekFilterButtons />
         <Switch>
+          <Route path="/subject/:subject/week/:week" component={WeekFilterTable} />
           <Route path="/subject/:subject" component={SubjectTable} />
-          <Route path="/week/:week" component={WeekFilterTable} />
         </Switch>
       </div>
     </Router>
