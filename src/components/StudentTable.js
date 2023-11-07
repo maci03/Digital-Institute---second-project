@@ -1,42 +1,69 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 function StudentTable() {
-  const { subject } = useParams();
-  const [marks, setMarks] = useState(Array(10).fill('')); // Assuming 10 students
+  const [studentData, setStudentData] = useState([
+    { name: '', surname: '' },
+    { name: '', surname: '' },
+  ]);
 
-  // Handle changes to the marks
-  const handleMarkChange = (index, value) => {
-    const updatedMarks = [...marks];
-    updatedMarks[index] = value;
-    setMarks(updatedMarks);
+  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
+  const addStudentRow = () => {
+    const newStudentData = [...studentData, { name: '', surname: '' }];
+    setStudentData(newStudentData);
   };
 
-  // Render the table with input fields for student marks
+  const updateStudentCell = (rowIndex, columnName, value) => {
+    const newStudentData = [...studentData];
+    newStudentData[rowIndex][columnName] = value;
+    setStudentData(newStudentData);
+  };
+
   return (
-    <table>
-      <caption>{subject} Marks</caption>
-      <thead>
-        <tr>
-          <th>Student</th>
-          <th>Marks</th>
-        </tr>
-      </thead>
-      <tbody>
-        {marks.map((mark, index) => (
-          <tr key={index}>
-            <td>Student {index + 1}</td>
-            <td>
-              <input
-                type="number"
-                value={mark || ''}
-                onChange={(e) => handleMarkChange(index, e.target.value)}
-              />
-            </td>
+    <div>
+      <h2>Student Information and Grades</h2>
+      <table className="student-grades-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            {daysOfWeek.map((day, index) => (
+              <th key={index}>{day}</th>
+            ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {studentData.map((student, rowIndex) => (
+            <tr key={rowIndex}>
+              <td>
+                <input
+                  type="text"
+                  value={student.name}
+                  onChange={(e) => updateStudentCell(rowIndex, 'name', e.target.value)}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  value={student.surname}
+                  onChange={(e) => updateStudentCell(rowIndex, 'surname', e.target.value)}
+                />
+              </td>
+              {daysOfWeek.map((day, dayIndex) => (
+                <td key={dayIndex}>
+                  <input
+                    type="text"
+                    value={studentData[rowIndex][day]}
+                    onChange={(e) => updateStudentCell(rowIndex, day, e.target.value)}
+                  />
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button onClick={addStudentRow}>Add Student Row</button>
+    </div>
   );
 }
 

@@ -7,7 +7,7 @@ function SubjectTable() {
 
   return (
     <div id="tableContainer">
-
+      
     </div>
   );
 }

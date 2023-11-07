@@ -18,6 +18,8 @@ function App() {
           <Route path="/subject/:subject/week/:week" component={WeekFilterTable} />
           <Route path="/subject/:subject" component={SubjectTable} />
         </Switch>
+      <StudentTable />
+
       </div>
     </Router>
   );
