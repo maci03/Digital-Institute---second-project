@@ -10,7 +10,8 @@
   color: blue; 
   border: 1px solid blue; 
   padding: 5px 10px;
-  text-decoration: none; 
+  text-decoration: none;
+  cursor: pointer;
 }
 /* SubjectButtons.css  */
 .button-container-week {
