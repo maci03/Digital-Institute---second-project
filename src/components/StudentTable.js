@@ -1,13 +1,15 @@
 import React, { useContext, useState } from "react";
 import { StudentsContext } from "../store/studentsContext";
 import StudentGradeByWeekDay from "./StudentGradeByWeekday";
-import { AddNewStudentModal } from "./AddNewStudentModal";
+import AddNewStudentForm from "./AddNewStudentForm";
 
 function StudentTable() {
   const { activeSubject, activeWeek, students } = useContext(StudentsContext);
   const [addStudentModalOpen, setAddStudentModalOpen] = useState(false);
 
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
+  const handleCloseModal = () => setAddStudentModalOpen(false);
 
   return (
     <div>
@@ -41,10 +43,16 @@ function StudentTable() {
           })}
         </tbody>
       </table>
-      <button type="button" onClick={() => setAddStudentModalOpen(true)}>
+      <button
+        disabled={addStudentModalOpen}
+        type="button"
+        onClick={() => setAddStudentModalOpen(true)}
+      >
         Add Student Row
       </button>
-      {addStudentModalOpen ? <AddNewStudentModal /> : null}
+      {addStudentModalOpen ? (
+        <AddNewStudentForm onClose={handleCloseModal} />
+      ) : null}
     </div>
   );
 }

@@ -12,7 +12,13 @@
   padding: 5px 10px;
   text-decoration: none;
   cursor: pointer;
+  border-radius: 4px;
 }
+
+.button:hover {
+  opacity: 0.7;
+}
+
 /* SubjectButtons.css  */
 .button-container-week {
   display: flex;
