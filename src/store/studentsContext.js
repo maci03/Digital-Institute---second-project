@@ -83,9 +83,9 @@ const DUMMY_DATA = [
 ];
 
 export const ContextProvider = ({ children }) => {
-  const [activeSubject, setActiveSubject] = useState(GEORGIAN);
-  const [activeWeek, setActiveWeek] = useState(WEEK_ONE);
-  const [students, setStudents] = useState(DUMMY_DATA);
+  const [activeSubject, setActiveSubject] = useState(() => GEORGIAN);
+  const [activeWeek, setActiveWeek] = useState(() => WEEK_ONE);
+  const [students, setStudents] = useState(() => DUMMY_DATA);
 
   const contextValue = {
     students,

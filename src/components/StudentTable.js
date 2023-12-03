@@ -1,29 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { StudentsContext } from "../store/studentsContext";
 
 function StudentTable() {
-  const [studentData, setStudentData] = useState([
-    { name: "", surname: "" },
-    { name: "", surname: "" },
-  ]);
-
-  const { activeSubject, activeWeek } = useContext(StudentsContext);
-
-  console.log("activeSubject", activeSubject);
-  console.log("activeWeek", activeWeek);
+  const { activeSubject, activeWeek, students } = useContext(StudentsContext);
 
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-
-  const addStudentRow = () => {
-    const newStudentData = [...studentData, { name: "", surname: "" }];
-    setStudentData(newStudentData);
-  };
-
-  const updateStudentCell = (rowIndex, columnName, value) => {
-    const newStudentData = [...studentData];
-    newStudentData[rowIndex][columnName] = value;
-    setStudentData(newStudentData);
-  };
 
   return (
     <div>
@@ -39,42 +20,25 @@ function StudentTable() {
           </tr>
         </thead>
         <tbody>
-          {studentData.map((student, rowIndex) => (
-            <tr key={rowIndex}>
-              <td>
-                <input
-                  type="text"
-                  value={student.name}
-                  onChange={(e) =>
-                    updateStudentCell(rowIndex, "name", e.target.value)
-                  }
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={student.surname}
-                  onChange={(e) =>
-                    updateStudentCell(rowIndex, "surname", e.target.value)
-                  }
-                />
-              </td>
-              {daysOfWeek.map((day, dayIndex) => (
-                <td key={dayIndex}>
-                  <input
-                    type="text"
-                    value={studentData[rowIndex][day]}
-                    onChange={(e) =>
-                      updateStudentCell(rowIndex, day, e.target.value)
-                    }
-                  />
-                </td>
-              ))}
-            </tr>
-          ))}
+          {students.map((student) => {
+            const week = student.performance[activeSubject][activeWeek];
+            return (
+              <tr key={student.id}>
+                <td>{student.name}</td>
+                <td>{student.lastname}</td>
+                {Object.entries(week).map((day) => (
+                  <td key={day[0]}>
+                    <input type="text" value={day[1]} />
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
-      <button onClick={addStudentRow}>Add Student Row</button>
+      <button type="button" onClick={() => {}}>
+        Add Student Row
+      </button>
     </div>
   );
 }

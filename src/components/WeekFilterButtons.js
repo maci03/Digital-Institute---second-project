@@ -23,7 +23,11 @@ function WeekFilterButtons() {
   return (
     <div id="week-filter-buttons" className="button-container-week">
       {WEEKS.map((week) => (
-        <div className="button" onClick={() => setActiveWeek(week.value)}>
+        <div
+          key={week.value}
+          className="button"
+          onClick={() => setActiveWeek(week.value)}
+        >
           {week.title}
         </div>
       ))}
