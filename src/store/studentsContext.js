@@ -11,71 +11,71 @@ const DUMMY_DATA = [
     performance: {
       math: {
         week1: {
-          monday: 80,
-          tuesday: 75,
-          wednesday: 90,
-          thursday: 85,
-          friday: 88,
+          Monday: 80,
+          Tuesday: 75,
+          Wednesday: 90,
+          Thursday: 85,
+          Friday: 88,
         },
         week2: {
-          monday: 85,
-          tuesday: 78,
-          wednesday: 92,
-          thursday: 89,
-          friday: 91,
+          Monday: 85,
+          Tuesday: 78,
+          Wednesday: 92,
+          Thursday: 89,
+          Friday: 91,
         },
         week3: {
-          monday: 88,
-          tuesday: 82,
-          wednesday: 95,
-          thursday: 90,
-          friday: 93,
+          Monday: 88,
+          Tuesday: 82,
+          Wednesday: 95,
+          Thursday: 90,
+          Friday: 93,
         },
       },
       georgian: {
         week1: {
-          monday: 70,
-          tuesday: 68,
-          wednesday: 72,
-          thursday: 75,
-          friday: 74,
+          Monday: 70,
+          Tuesday: 68,
+          Wednesday: 72,
+          Thursday: 75,
+          Friday: 74,
         },
         week2: {
-          monday: 75,
-          tuesday: 72,
-          wednesday: 78,
-          thursday: 80,
-          friday: 79,
+          Monday: 75,
+          Tuesday: 72,
+          Wednesday: 78,
+          Thursday: 80,
+          Friday: 79,
         },
         week3: {
-          monday: 78,
-          tuesday: 76,
-          wednesday: 82,
-          thursday: 85,
-          friday: 84,
+          Monday: 78,
+          Tuesday: 76,
+          Wednesday: 82,
+          Thursday: 85,
+          Friday: 84,
         },
       },
       english: {
         week1: {
-          monday: 85,
-          tuesday: 82,
-          wednesday: 88,
-          thursday: 90,
-          friday: 87,
+          Monday: 85,
+          Tuesday: 82,
+          Wednesday: 88,
+          Thursday: 90,
+          Friday: 87,
         },
         week2: {
-          monday: 88,
-          tuesday: 85,
-          wednesday: 92,
-          thursday: 94,
-          friday: 91,
+          Monday: 88,
+          Tuesday: 85,
+          Wednesday: 92,
+          Thursday: 94,
+          Friday: 91,
         },
         week3: {
-          monday: 90,
-          tuesday: 88,
-          wednesday: 94,
-          thursday: 96,
-          friday: 93,
+          Monday: 90,
+          Tuesday: 88,
+          Wednesday: 94,
+          Thursday: 96,
+          Friday: 93,
         },
       },
     },
@@ -87,6 +87,28 @@ export const ContextProvider = ({ children }) => {
   const [activeWeek, setActiveWeek] = useState(() => WEEK_ONE);
   const [students, setStudents] = useState(() => DUMMY_DATA);
 
+  function updateGrade(studentId, day, grade) {
+    const clonedStudents = [...students];
+
+    const studentIndex = clonedStudents.findIndex(
+      (student) => student.id === studentId
+    );
+
+    if (studentIndex === -1) {
+      return;
+    }
+
+    const student = { ...clonedStudents[studentIndex] };
+
+    student.performance[activeSubject][activeWeek][day] = grade;
+
+    setStudents([
+      ...clonedStudents.slice(0, studentIndex),
+      student,
+      ...clonedStudents.slice(studentIndex + 1),
+    ]);
+  }
+
   const contextValue = {
     students,
     setStudents,
@@ -94,6 +116,7 @@ export const ContextProvider = ({ children }) => {
     setActiveSubject,
     activeWeek,
     setActiveWeek,
+    updateGrade,
   };
 
   return (

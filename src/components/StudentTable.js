@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { StudentsContext } from "../store/studentsContext";
+import StudentGradeByWeekDay from "./StudentGradeByWeekday";
 
 function StudentTable() {
   const { activeSubject, activeWeek, students } = useContext(StudentsContext);
@@ -27,9 +28,11 @@ function StudentTable() {
                 <td>{student.name}</td>
                 <td>{student.lastname}</td>
                 {Object.entries(week).map((day) => (
-                  <td key={day[0]}>
-                    <input type="text" value={day[1]} />
-                  </td>
+                  <StudentGradeByWeekDay
+                    key={day[0]}
+                    day={day}
+                    studentId={student.id}
+                  />
                 ))}
               </tr>
             );

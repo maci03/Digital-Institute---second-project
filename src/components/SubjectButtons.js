@@ -19,12 +19,17 @@ const SUBJECTS = [
 ];
 
 function SubjectButtons() {
-  const { setActiveSubject, setActiveWeek } = useContext(StudentsContext);
+  const { setActiveSubject, setActiveWeek, activeSubject } =
+    useContext(StudentsContext);
 
   return (
     <div id="buttons" className="button-container">
       {SUBJECTS.map((subject) => (
         <div
+          style={{
+            background: activeSubject === subject.value ? "blue" : "",
+            color: activeSubject === subject.value ? "white" : "blue",
+          }}
           key={subject.value}
           className="button"
           onClick={() => {

@@ -18,12 +18,16 @@ const WEEKS = [
 ];
 
 function WeekFilterButtons() {
-  const { setActiveWeek } = useContext(StudentsContext);
+  const { setActiveWeek, activeWeek } = useContext(StudentsContext);
 
   return (
     <div id="week-filter-buttons" className="button-container-week">
       {WEEKS.map((week) => (
         <div
+          style={{
+            background: activeWeek === week.value ? "blue" : "",
+            color: activeWeek === week.value ? "white" : "blue",
+          }}
           key={week.value}
           className="button"
           onClick={() => setActiveWeek(week.value)}
