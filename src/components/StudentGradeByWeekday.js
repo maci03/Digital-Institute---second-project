@@ -36,7 +36,13 @@ function StudentGradeByWeekDay({ day, studentId }) {
       {showForm ? (
         form
       ) : (
-        <div onClick={() => setShowForm(true)}>{dayGrade}</div>
+        <div style={{ cursor: "pointer" }} onClick={() => setShowForm(true)}>
+          {dayGrade ? (
+            dayGrade
+          ) : (
+            <span style={{ fontSize: "12px" }}>{"Add grade"}</span>
+          )}
+        </div>
       )}
     </td>
   );

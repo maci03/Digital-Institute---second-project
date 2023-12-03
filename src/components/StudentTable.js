@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StudentsContext } from "../store/studentsContext";
 import StudentGradeByWeekDay from "./StudentGradeByWeekday";
+import { AddNewStudentModal } from "./AddNewStudentModal";
 
 function StudentTable() {
   const { activeSubject, activeWeek, students } = useContext(StudentsContext);
+  const [addStudentModalOpen, setAddStudentModalOpen] = useState(false);
 
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
@@ -39,9 +41,10 @@ function StudentTable() {
           })}
         </tbody>
       </table>
-      <button type="button" onClick={() => {}}>
+      <button type="button" onClick={() => setAddStudentModalOpen(true)}>
         Add Student Row
       </button>
+      {addStudentModalOpen ? <AddNewStudentModal /> : null}
     </div>
   );
 }

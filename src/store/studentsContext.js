@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { GEORGIAN, WEEK_ONE } from "../constants/constants";
+import { createEmptyStudent } from "../utils/createEmptyStudent";
 
 export const StudentsContext = createContext({});
 
@@ -109,6 +110,14 @@ export const ContextProvider = ({ children }) => {
     ]);
   }
 
+  function createStudent(name, surname) {
+    const newStudent = createEmptyStudent(name, surname);
+
+    newStudent.id = students.length + 1;
+
+    setStudents([...students, newStudent]);
+  }
+
   const contextValue = {
     students,
     setStudents,
@@ -117,6 +126,7 @@ export const ContextProvider = ({ children }) => {
     activeWeek,
     setActiveWeek,
     updateGrade,
+    createStudent,
   };
 
   return (
