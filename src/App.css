@@ -1,5 +1,4 @@
 
-/* SubjectButtons.css */
 .button-container {
   display: flex;
   gap: 10px; 
@@ -34,29 +33,36 @@
   padding: 5px 10px;
   text-decoration: none; 
 }
-/* CSS Styles */
+
 .student-grades-table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  
 }
 
 .student-grades-table th, .student-grades-table td {
   border: 1px solid #333;
   padding: 8px;
   text-align: center;
+  
 }
 
 button {
   display: block;
-  margin-top: 10px;
   background-color: #007bff;
   color: #fff;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
+  margin: 5px;
 }
 
 button:hover {
   background-color: #0056b3;
+}
+.form-div{
+  display: flex;
+  justify-content: center;
+  
 }

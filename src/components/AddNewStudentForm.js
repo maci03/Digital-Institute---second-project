@@ -19,7 +19,7 @@ function AddNewStudentForm({ onClose }) {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">სახელი</label>
         <br />
         <input
           id="name"
@@ -28,7 +28,7 @@ function AddNewStudentForm({ onClose }) {
         />
       </div>
       <div>
-        <label htmlFor="lastname">Lastname</label>
+        <label htmlFor="lastname">გვარი</label>
         <br />
         <input
           id="lastname"
@@ -39,7 +39,7 @@ function AddNewStudentForm({ onClose }) {
       <div>
         <button type="submit">Add Student</button>
         <button type="button" onClick={onClose}>
-          Cancel
+          გაუქმება
         </button>
       </div>
     </form>

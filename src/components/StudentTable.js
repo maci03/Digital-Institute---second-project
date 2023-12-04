@@ -17,8 +17,8 @@ function StudentTable() {
       <table className="student-grades-table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Surname</th>
+            <th>სახელი</th>
+            <th>გვარი</th>
             {daysOfWeek.map((day, index) => (
               <th key={index}>{day}</th>
             ))}
@@ -48,7 +48,7 @@ function StudentTable() {
         type="button"
         onClick={() => setAddStudentModalOpen(true)}
       >
-        Add Student Row
+        დაამატე სტუდენტი
       </button>
       {addStudentModalOpen ? (
         <AddNewStudentForm onClose={handleCloseModal} />

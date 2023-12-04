@@ -21,8 +21,8 @@ function StudentGradeByWeekDay({ day, studentId }) {
   }, [activeSubject, activeWeek]);
 
   const form = (
-    <form onSubmit={handleSubmit}>
-      <input
+    <form  className="form-div" onSubmit={handleSubmit}>
+      <input 
         type="text"
         value={studentGrade}
         onChange={(e) => setStudentGrade(e.target.value)}
